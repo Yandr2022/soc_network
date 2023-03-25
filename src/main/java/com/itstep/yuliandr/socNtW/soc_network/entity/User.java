@@ -30,8 +30,8 @@ public class User implements UserDetails {
     //не ограничен по длине
     @Column(columnDefinition = "text")
     private String bio;
-    //длина, с учетом шифрования
-    @Column(length = 3000)
+
+    @Column(length = 3000)//длина, с учетом шифрования
     private String password;
     @ElementCollection(targetClass = ERole.class)
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_Id"))
@@ -41,15 +41,15 @@ public class User implements UserDetails {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user", orphanRemoval = true)
     private List<Post> posts = new ArrayList<>();
 
-    //не обновляемое поле + шаблон формата
+
     @JsonFormat(pattern = "yyyy-mm-dd HH:mm:ss")
-    @Column(updatable = false)
+    @Column(updatable = false)//не обновляемое поле + шаблон формата
     private LocalDateTime createdDate;
-    //загружается в другую таблицу
-    @Transient
+
+    @Transient //загружается в другую таблицу
     private Collection<? extends GrantedAuthority> authorities;
-//создается перед загрузкой в БД
-    @PrePersist
+
+    @PrePersist//создается перед загрузкой в БД
     protected void onCreate(){
         this.createdDate = LocalDateTime.now();
     }
