@@ -23,9 +23,9 @@ public class Post {
     @ElementCollection(targetClass = String.class)
     private Set<String> likedUsers = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)//загрузка пользователей только по запросу
     private User user;
-
+    //загрузка комментариев вместе с постом, + удаление
     @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER, mappedBy = "post", orphanRemoval = true)
     private List<Comment> comments = new ArrayList<>();
 

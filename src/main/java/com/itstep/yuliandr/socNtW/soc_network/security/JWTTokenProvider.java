@@ -18,7 +18,7 @@ public class JWTTokenProvider {
     public String generateToken(Authentication authentication) {
         User user = (User) authentication.getPrincipal();//хранит данные пользователя
         Date now = new Date(System.currentTimeMillis());
-        Date expiryDate = new Date(now.getTime() + ConstanceSec.EXPIRATION_TIME);//время жизни токена=тек время + заданное
+        Date expiryDate = new Date(now.getTime() + ConstanceSec.EXPIRATION_TIME);//время жизни токена=тек время + заданный лимит
 //создаем claims для передачи данных пользователя в JWT
         String userId = Long.toString(user.getId());
         Map<String, Object> claimsMap = new HashMap<>();

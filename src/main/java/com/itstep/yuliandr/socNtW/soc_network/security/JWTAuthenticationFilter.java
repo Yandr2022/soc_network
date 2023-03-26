@@ -48,8 +48,8 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
       filterChain.doFilter(request, response);
     }
         private String getJWTFromRequest(HttpServletRequest request) {
-            String bearToken = request.getHeader(ConstanceSec.HEADER_STRING);//при каждом запросе внутри HEADER передается токен
-            if (StringUtils.hasText(bearToken) && bearToken.startsWith(ConstanceSec.TOKEN_PREFIX)) {
+            String bearToken = request.getHeader(ConstanceSec.HEADER_STRING);//при каждом запросе в данных авторизации передается токен
+            if (StringUtils.hasText(bearToken) && bearToken.startsWith(ConstanceSec.TOKEN_PREFIX)) {//проверка валидности формата токена
                 return bearToken.split(" ")[1];
             }
             return null;
