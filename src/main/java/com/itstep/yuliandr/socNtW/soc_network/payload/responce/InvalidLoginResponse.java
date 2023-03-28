@@ -4,12 +4,12 @@ import lombok.Getter;
 
 @Getter
 public class InvalidLoginResponse {
-    private  String inwUsNameResponse;
-    private  String inwUsPasswResponse;
+    private  String invUsNameResponse;
+    private  String invUsPasswResponse;
 
     //ответ на 401
     public InvalidLoginResponse() {
-        this.inwUsNameResponse = "Invalid User Name ";
-        this.inwUsPasswResponse = "Invalid User Password ";
+        this.invUsNameResponse = "Invalid User Name ";
+        this.invUsPasswResponse = "Invalid User Password ";
     }
 }
