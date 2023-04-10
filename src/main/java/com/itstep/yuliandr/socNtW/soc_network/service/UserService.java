@@ -48,9 +48,8 @@ public class UserService {
 
     public User updateUser(UserDTO userDTO, Principal principal){//principal -содержит данные пользователя из БД
         User user = getUserByPrincipal(principal);
-        user.setName(userDTO.getUsername());
+        user.setName(userDTO.getFirstname());
         user.setLastname(userDTO.getLastname());
-        user.setUsername(userDTO.getUsername());
         user.setBio(userDTO.getBio());
      return repository.save(user);
     }
